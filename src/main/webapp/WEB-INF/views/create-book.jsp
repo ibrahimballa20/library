@@ -39,7 +39,15 @@
 </div>
 
 <div class="content">
-    <h3>Welcome to the Library Management System Assignment for Building Database Application Course</h3>
+   <h3>Add Book</h3>
+    <form action="/books/save" method="post">
+        Book Title: <input type="text" name="title" /> <br/>
+        Book Code: <input type="text" name="code" /> <br/>
+        Book ISBN: <input type="text" name="isbn" /> <br/>
+        Publication Date: <input type="date" name="publicationDate" /><br/>
+        Book Publisher: <input type="text" name="publisher" /><br/>
+        <button type="submit">Create</button>
+    </form>
 </div>
 
 </body>
