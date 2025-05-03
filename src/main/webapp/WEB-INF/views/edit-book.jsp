@@ -2,6 +2,7 @@
 
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,36 +39,41 @@
 </div>
 
 <div class="content">
-   <h3>Add Book</h3>
-    <form action="${pageContext.request.contextPath}/books/create" method="post">
-        Book Title: <input type="text" name="title"  /> <br/>
+    <h3>Update Book</h3>
+    <form action="${pageContext.request.contextPath}/books/update" method="post">
+        <input type="hidden" name="id" value="${book.id}" />
+        Book Title: <input type="text" name="title"  value="${book.title}" /> <br/>
         <form:errors path="title" cssClass="error" /><br/>
-        Book Code: <input type="text" name="code" /> <br/>
+        Book Code: <input type="text" name="code" value="${book.code}" /> <br/>
         <form:errors path="code" cssClass="error" /><br/>
-        Book ISBN: <input type="text" name="isbn"  /> <br/>
+        Book ISBN: <input type="text" name="isbn" value="${book.isbn}"   /> <br/>
         <form:errors path="isbn" cssClass="error" /><br/>
-        Publication Date: <input type="date" name="publicationDate" required/><br/>
+        Publication Date: <input type="date" name="publicationDate" value="<fmt:formatDate value='${book.publicationDate}' pattern='yyyy-MM-dd' />"  required/><br/>
         <form:errors path="publicationDate" cssClass="error" /><br/>
-        Book Publisher: <input type="text" name="publisher" required/><br/>
+        Book Publisher: <input type="text" name="publisher" value="${book.publisher}" required/><br/>
         <form:errors path="publisher" cssClass="error" /><br/>
         Book Category:
         <select id="category" name="category.id" required>
             <option value="">-- Select Category --</option>
             <c:forEach var="category" items="${categories}">
-                <option value="${category.id}">${category.name}</option>
+                <option value="${category.id}" <c:if test="${category.id == book.category.id}">selected</c:if>>${category.name}</option>
             </c:forEach>
         </select>
         <form:errors path="category" cssClass="error" /><br/>
-        Book Author/Authors:
-        <select id="author" name="authorIds"  multiple required>
-            <option value="">-- Select Author --</option>
-            <!-- Iterate through the authors list passed from the controller -->
+        Book Authors:
+        <select name="authorIds" multiple required>
             <c:forEach var="author" items="${authors}">
-                <option value="${author.id}">${author.firstname} ${author.lastname}</option>
+                <c:set var="isSelected" value="false" />
+                <c:forEach var="selectedAuthor" items="${selectedAuthors}">
+                    <c:if test="${author.id == selectedAuthor.id}">
+                        <c:set var="isSelected" value="true" />
+                    </c:if>
+                </c:forEach>
+                <option value="${author.id}" ${isSelected ? 'selected' : ''}>${author.firstname} ${author.lastname}</option>
             </c:forEach>
         </select>
         <br/>
-        <button type="submit">Create</button>
+        <button type="submit">Update Book</button>
     </form>
 </div>
 

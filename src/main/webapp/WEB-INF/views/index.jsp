@@ -18,11 +18,9 @@
         </button>
         <div class="dropdown-content">
             <a href="/books/create">Add Book</a>
-            <a href="#">Edit Book</a>
-            <a href="#">View Books</a>
+            <a href="/books/">View Books</a>
             <a href="#">Add Book Category</a>
             <a href="#">View Book Category</a>
-            <a href="#">Edit Book Category</a>
 
         </div>
     </div>
