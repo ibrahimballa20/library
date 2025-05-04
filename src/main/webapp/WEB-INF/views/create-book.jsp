@@ -2,6 +2,7 @@
 
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +20,9 @@
         </button>
         <div class="dropdown-content">
             <a href="/books/create">Add Book</a>
-            <a href="/books/">View Books</a>
-            <a href="#">Add Book Category</a>
-            <a href="#">View Book Category</a>
+            <a href="/books/index">View Books</a>
+            <a href="/category/create">Add Book Category</a>
+            <a href="/category/index">View Book Category</a>
 
         </div>
     </div>
@@ -30,15 +31,15 @@
             ▼
         </button>
         <div class="dropdown-content">
-            <a href="#">Add Author</a>
-            <a href="#">View Author</a>
+            <a href="/author/create">Add Author</a>
+            <a href="/author/index">View Author</a>
         </div>
     </div>
 
 </div>
 
 <div class="content">
-   <h3>Add Book</h3>
+    <h3>Create Book</h3>
     <form action="${pageContext.request.contextPath}/books/create" method="post">
         Book Title: <input type="text" name="title"  /> <br/>
         <form:errors path="title" cssClass="error" /><br/>
@@ -69,6 +70,7 @@
         <br/>
         <button type="submit">Create</button>
     </form>
+
 </div>
 
 </body>

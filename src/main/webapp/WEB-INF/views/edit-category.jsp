@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,7 @@
         </button>
         <div class="dropdown-content">
             <a href="/books/create">Add Book</a>
-            <a href="/books/">View Books</a>
+            <a href="/books/index">View Books</a>
             <a href="/category/create">Add Book Category</a>
             <a href="/category/index">View Book Category</a>
 
@@ -37,7 +39,17 @@
 </div>
 
 <div class="content">
-    <h3>Welcome to the Library Management System Assignment for Building Database Application Course</h3>
+    <h3>Update Book Category</h3>
+    <form action="${pageContext.request.contextPath}/category/create" method="post">
+        <input type="hidden" name="id" value="${category.id}" />
+        Category Name: <input type="text" name="name"  value="${category.name}" /> <br/>
+        <form:errors path="title" cssClass="error" /><br/>
+        Category Code: <input type="text" name="code" value="${category.code}"  /> <br/>
+        <form:errors path="code" cssClass="error" /><br/>
+
+        <button type="submit">Update Category</button>
+    </form>
+
 </div>
 
 </body>

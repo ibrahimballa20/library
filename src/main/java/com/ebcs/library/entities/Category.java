@@ -29,4 +29,14 @@ public class Category {
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null) {
+            createdAt = new Date();
+        }
+        if (updatedAt == null) {
+            updatedAt = new Date();
+        }
+    }
 }

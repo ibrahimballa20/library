@@ -19,7 +19,7 @@
         </button>
         <div class="dropdown-content">
             <a href="/books/create">Add Book</a>
-            <a href="/books/">View Books</a>
+            <a href="/books/index">View Books</a>
             <a href="/category/create">Add Book Category</a>
             <a href="/category/index">View Book Category</a>
 
@@ -38,33 +38,33 @@
 </div>
 
 <div class="content">
-  <h3>Books List</h3>
+    <h3>Author List</h3>
     <table class="table">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Code</th>
-            <th>ISBN</th>
-            <th>Publisher</th>
-            <th>Publication Date</th>
-            <th>Author Count</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Birth Date</th>
+            <th>Death Date</th>
+            <th>Biography</th>
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="book" items="${books}">
+        <c:forEach var="author" items="${authors}">
             <tr>
-                <td>${book.id}</td>
-                <td>${book.title}</td>
-                <td>${book.code}</td>
-                <td>${book.isbn}</td>
-                <td>${book.publisher}</td>
-                <td>${book.publicationDate}</td>
-                <td>${book.authorCount}</td>
+                <td>${author.id}</td>
+                <td>${author.firstname}</td>
+                <td>${author.lastname}</td>
+                <td>${author.email}</td>
+                <td>${author.birthDate}</td>
+                <td>${author.deathDate}</td>
+                <td>${author.biography}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/books/edit/${book.id}">Edit</a> |
-                    <a href="${pageContext.request.contextPath}/books/delete/${book.id}" onclick="return confirm('Are you sure You want to Delete this Book?')">Delete</a>
+                    <a href="${pageContext.request.contextPath}/author/edit/${author.id}">Edit</a> |
+                    <a href="${pageContext.request.contextPath}/author/delete/${author.id}" onclick="return confirm('Are you sure You want to Delete this Book Category?')">Delete</a>
                 </td>
             </tr>
         </c:forEach>

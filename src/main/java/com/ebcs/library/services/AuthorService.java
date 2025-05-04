@@ -22,4 +22,16 @@ public class AuthorService {
     public List<Author> getAuthorsByIds(List<Long> authorIds) {
         return authorRepository.findAllById(authorIds);
     }
+    public Author getAuthorById(Long id) {
+        return authorRepository.findById(id).orElse(null);
+    }
+    public Author saveAuthor(Author author) {
+        return authorRepository.save(author);
+    }
+    public void deleteAuthorById(Long id) {
+        authorRepository.deleteById(id);
+    }
+    public void updateAuthor(Author author) {
+        authorRepository.save(author);
+    }
 }

@@ -20,9 +20,9 @@
         </button>
         <div class="dropdown-content">
             <a href="/books/create">Add Book</a>
-            <a href="/books/">View Books</a>
-            <a href="#">Add Book Category</a>
-            <a href="#">View Book Category</a>
+            <a href="/books/index">View Books</a>
+            <a href="/category/create">Add Book Category</a>
+            <a href="/category/index">View Book Category</a>
 
         </div>
     </div>
@@ -31,8 +31,8 @@
             ▼
         </button>
         <div class="dropdown-content">
-            <a href="#">Add Author</a>
-            <a href="#">View Author</a>
+            <a href="/author/create">Add Author</a>
+            <a href="/author/index">View Author</a>
         </div>
     </div>
 

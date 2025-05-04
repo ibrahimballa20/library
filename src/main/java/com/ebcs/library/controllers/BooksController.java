@@ -34,10 +34,12 @@ public class BooksController {
         this.bookService = bookService;
         this.authorService = authorService;
     }
-    @GetMapping("/")
+    @GetMapping("/index")
     public String booksPage(Model model)
     {
-        model.addAttribute("books",this.bookService.findAll());
+
+       // model.addAttribute("books",this.bookService.findAll());
+        model.addAttribute("books",this.bookService.getBooksAndAuthorCount());
         return "view-books";
     }
     @GetMapping("/create")
@@ -65,7 +67,7 @@ public class BooksController {
         book.setAuthors(new HashSet<>(selectedAuthors));
 
         bookService.createBook(book);
-        return "redirect:/books/";
+        return "redirect:/books/index";
     }
 
     @GetMapping("/edit/{id}")
@@ -94,7 +96,7 @@ public class BooksController {
         this.bookService.deleteAuthors(existingBook.getId());
         existingBook.setAuthors(new HashSet<>(authorsList));
         this.bookService.updateBook(existingBook);
-        return "redirect:/books/";
+        return "redirect:/books/index";
     }
 
     @GetMapping("/delete/{id}")
@@ -102,7 +104,7 @@ public class BooksController {
 
         bookService.deleteAuthors(id);
         bookService.deleteBookById(id);
-        return "redirect:/books/";
+        return "redirect:/books/index";
     }
 
 
